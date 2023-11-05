@@ -1,0 +1,27 @@
+<div class="container">
+    <h1 class="title-text">Translation App</h1>
+
+    <div class="inner-container">
+        <div class="input-section">
+            <label class="sub-header" for="">Select Input Language</label>
+            <select class="m20" [(ngModel)]="inputLanguage">
+                <option value="">Choose language</option>
+                <option *ngFor="let language of languages" [ngValue]="language.value">{{language.name}}</option>
+            </select>
+            <textarea class="text-entry" [(ngModel)]="inputText" placeholder="Enter text to be translated" ></textarea>
+            
+        </div>
+        <div class="input-section">
+            <label class="sub-header" for="">Select Target Language</label>
+            <select class="m20"  [(ngModel)]="outputLanguage">
+                <option value="">Choose language</option>
+                <option *ngFor="let language of languages" [ngValue]="language.value">{{language.name}}</option>
+            </select>
+            <p class="text-entry">{{translatedText}}</p>
+        </div>
+    </div>
+    <div class="inner-container">
+        <button [disabled]="!inputLanguage || !inputText || !outputLanguage" (click)="translate()">Translate</button>
+    </div>
+
+</div>
