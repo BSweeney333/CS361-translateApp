@@ -1,5 +1,5 @@
 ﻿# CS361-translateApp
-##Language Translation API
+## Language Translation API
 
 This API allows you to receive a translation of the text you send to it, depending on the target language that you provide to it. It is really easy to use. 
 
@@ -25,7 +25,7 @@ The sourceLanguage and targetLanguage must follow this mapping:
 So if you want the target language to be french, you would have to send the fr for the targetLanguage parameter.
 
 
-##Example Request:
+### Example Request:
 Method = GET
 Params = inputText, sourceLanguage, targetLanguage
 URL = http://localhost:5000/translate?inputText=Hello&sourceLanguage=en&targetLanguage=es
