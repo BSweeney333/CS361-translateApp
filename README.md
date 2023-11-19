@@ -26,9 +26,9 @@ So if you want the target language to be french, you would have to send the fr f
 
 
 ### Example Request:
-Method = GET
-Params = inputText, sourceLanguage, targetLanguage
-URL = http://localhost:5000/translate?inputText=Hello&sourceLanguage=en&targetLanguage=es
+Method = GET<br>
+Params = inputText, sourceLanguage, targetLanguage<br>
+URL = http://localhost:5000/translate?inputText=Hello&sourceLanguage=en&targetLanguage=es<br>
 
 
 
