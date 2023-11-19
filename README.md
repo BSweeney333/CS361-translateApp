@@ -33,4 +33,5 @@ So if you want the target language to be french, you would have to send the fr f
 
 
 The request returns a JSON object containing the key translated_text with the value of the translation: {“translated_text”: “Hola”}
-![image](https://github.com/BSweeney333/CS361-translateApp/assets/91225918/b584f2e2-98e6-471a-80fa-e3b0a8a6f65a)
+![image](https://github.com/BSweeney333/CS361-translateApp/assets/91225918/5486e446-b2ed-4648-afbd-ad35e966c2d4)
+
