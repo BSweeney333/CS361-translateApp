@@ -5,7 +5,7 @@ This API allows you to receive a translation of the text you send to it, dependi
 
 11 Languages are supported by this API: Arabic, Chinese, English, French, German, Greek, Hebrew, Italian, Portuguese, Spanish, and Russian.
 
-In order to use this API you must send a GET request to ‘http://localhost:5000/translate’ and provide information for these three parameters: inputText, sourceLanguage, and targetLanguage.
+In order to use this API you must send a GET request to ‘http://localhost:5000/translate’ and provide information for these three parameters: **inputText**, **sourceLanguage**, and **targetLanguage**.
 
 The sourceLanguage and targetLanguage must follow this mapping:
 {
