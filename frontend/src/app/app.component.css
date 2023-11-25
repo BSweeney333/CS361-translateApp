@@ -2,7 +2,7 @@
 .container {
     margin: 0 auto;
     height: 600px;
-    width: 1000px;
+    width: 1200px;
     display: flex;
     flex-direction: column;
     border: solid black 1px;
@@ -35,6 +35,12 @@
     height: 200px;
     border: solid black 1px;
     color: black;
+}
+
+.text {
+    font-size: small;
+    font-weight: lighter;
+    color: rgb(41, 40, 40);
 }
 
 button {
@@ -70,4 +76,8 @@ button:disabled {
 
 .m20 {
     margin: 20px
+}
+
+.align-left {
+    text-align: left;
 }

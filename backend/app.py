@@ -1,5 +1,6 @@
 from flask import Flask, request, render_template
 from flask_cors import CORS
+import requests
 import argostranslate.package
 import argostranslate.translate
 
@@ -23,11 +24,39 @@ def create_app():
     
     @app.route('/translate')
     def translate():
+        data = {}
+        # Get inputed data
         inputText = request.args.get('inputText')
-        inputLanguage = request.args.get('inputLanguage')
-        outputLanguage = request.args.get('outputLanguage')
-        translatedText = argostranslate.translate.translate(inputText, inputLanguage, outputLanguage)
-        return {"translated_text": translatedText}
+        sourceLanguage = request.args.get('sourceLanguage')
+        targetLanguage = request.args.get('targetLanguage')
+        # Get translated text
+        translatedText = argostranslate.translate.translate(inputText, sourceLanguage, targetLanguage)
+
+        # Get English translation to make synonyms call
+        englishText = argostranslate.translate.translate(inputText, sourceLanguage, "en")
+
+        # Get synonyms
+        synonyms = getsynonyms(englishText)
+        translatedSynonyms = []
+        for synonym in synonyms:
+            translatedSynonym = argostranslate.translate.translate(synonym, sourceLanguage, targetLanguage)
+            translatedSynonyms.append(translatedSynonym)
+        return {"translated_text": translatedText, "synonyms": translatedSynonyms}
+    
+
+    def getsynonyms(text):
+        URL = "http://wordser:8080/api/v1/synonyms"
+        PARAMS = {'word': text}
+
+        # Split the text by spaces, if longer than 1, will return empty synonyms
+        words = text.split(' ')
+        synonyms = []
+        if words == 1:
+            response = requests.get(url= URL, params= PARAMS)
+            data = response.json()
+            synonyms = data["synonyms"]
+        return synonyms
+        # return ["passion", "fire", "desire"]
 
     return app
 

@@ -1,6 +1,6 @@
 <div class="container">
     <h1 class="title-text">Translation App</h1>
-
+    <p>*Please make sure an input and output language is selected and that there is text to translate before clicking the translate button*</p>
     <div class="inner-container">
         <div class="input-section">
             <label class="sub-header" for="">Select Input Language</label>
@@ -8,7 +8,7 @@
                 <option value="">Choose language</option>
                 <option *ngFor="let language of languages" [ngValue]="language.value">{{language.name}}</option>
             </select>
-            <textarea class="text-entry" [(ngModel)]="inputText" placeholder="Enter text to be translated" ></textarea>
+            <textarea class=" text text-entry" [(ngModel)]="inputText" placeholder="Enter text to be translated" ></textarea>
             
         </div>
         <div class="input-section">
@@ -17,7 +17,15 @@
                 <option value="">Choose language</option>
                 <option *ngFor="let language of languages" [ngValue]="language.value">{{language.name}}</option>
             </select>
-            <p class="text-entry">{{translatedText}}</p>
+            <p class=" text text-entry">{{translatedText ? translatedText: "Where translated text will appear"}}</p>
+        </div>
+        <div class="input-section">
+            <p class="sub-header">Translated Synonyms:</p>
+            <div class="">
+
+                <p class="align-left" *ngFor="let synonym of synonyms; let i = index">{{i + 1}}. {{synonym}}</p>
+            </div>
+
         </div>
     </div>
     <div class="inner-container">

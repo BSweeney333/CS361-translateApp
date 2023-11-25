@@ -3,7 +3,8 @@ import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 interface TranslatedData {
-    translated_text: string
+    translated_text: string,
+    synonyms: string[]
 }
 
 @Component({
@@ -32,14 +33,16 @@ export class AppComponent {
     public outputLanguage: string = '';
     public inputText: string = '';
     public translatedText: string = '';
+    public synonyms: string[] = []
 
     translate() {
         // Make HTTP request to python backend for translated text
         const params = new HttpParams(
-            {fromString : `inputLanguage=${this.inputLanguage}&outputLanguage=${this.outputLanguage}&inputText=${this.inputText}`})
+            {fromString : `sourceLanguage=${this.inputLanguage}&targetLanguage=${this.outputLanguage}&inputText=${this.inputText}`})
         const headers = new HttpHeaders({"Access-Control-Allow-Origin": '*'})
         this.http.get<TranslatedData>('http://localhost:5000/translate',{headers: headers, params:params}).subscribe(data => {
             this.translatedText = data.translated_text;
+            this.synonyms = data.synonyms;
         })
     }
 
