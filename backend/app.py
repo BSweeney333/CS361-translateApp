@@ -45,18 +45,20 @@ def create_app():
     
 
     def getsynonyms(text):
-        URL = "http://wordser:8080/api/v1/synonyms"
-        PARAMS = {'word': text}
+        # URL = "http://wordser:8080/api/v1/synonyms"
+        # PARAMS = {'word': text}
 
-        # Split the text by spaces, if longer than 1, will return empty synonyms
-        words = text.split(' ')
-        synonyms = []
-        if words == 1:
-            response = requests.get(url= URL, params= PARAMS)
-            data = response.json()
-            synonyms = data["synonyms"]
-        return synonyms
-        # return ["passion", "fire", "desire"]
+        # # Split the text by spaces, if longer than 1, will return empty synonyms
+        # words = text.split(' ')
+        # synonyms = []
+        # if words == 1:
+        #     response = requests.get(url= URL, params= PARAMS)
+        #     data = response.json()
+        #     synonyms = data["synonyms"]
+        # return synonyms
+        return ["passion", "fire", "desire"]
 
     return app
 
+if __name__ == "__main__":
+    create_app().run(host="0.0.0.0", port=5000)

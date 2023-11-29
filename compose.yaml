@@ -1,0 +1,23 @@
+services:
+    frontend:
+        build:
+            context: ./frontend
+            dockerfile: Dockerfile
+        image: frontend:compose
+        ports:
+            - "127.0.0.1:4200:4200"
+        networks:
+            - wordser
+    backend:
+        build:
+            context: ./backend
+            dockerfile: Dockerfile
+        image: backend:compose
+        ports:
+            - "127.0.0.1:5000:5000"
+        networks:
+            - wordser
+
+networks:
+    wordser:
+        name: wordser

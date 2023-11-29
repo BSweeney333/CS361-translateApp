@@ -40,7 +40,7 @@ export class AppComponent {
         const params = new HttpParams(
             {fromString : `sourceLanguage=${this.inputLanguage}&targetLanguage=${this.outputLanguage}&inputText=${this.inputText}`})
         const headers = new HttpHeaders({"Access-Control-Allow-Origin": '*'})
-        this.http.get<TranslatedData>('http://localhost:5000/translate',{headers: headers, params:params}).subscribe(data => {
+        this.http.get<TranslatedData>('http://127.0.0.1:5000/translate',{headers: headers, params:params}).subscribe(data => {
             this.translatedText = data.translated_text;
             this.synonyms = data.synonyms;
         })
