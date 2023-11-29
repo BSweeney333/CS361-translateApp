@@ -1,4 +1,4 @@
-FROM node:18.18.0
+FROM node:latest
 
 WORKDIR /app
 
@@ -8,14 +8,15 @@ RUN npm install
 
 COPY . .
 
+EXPOSE 4200
+
 RUN npm run build
 
 # FROM nginx:1.15.8-alpine
 
 
-# COPY --from=build /app/dist /usr/share/nginx/html
+# COPY --from=node /app/dist/frontend /usr/share/nginx/html
 
-EXPOSE 4200
 
 CMD ["npm", "start"]
 
