@@ -24,11 +24,14 @@ def create_app():
     
     @app.route('/translate')
     def translate():
-        data = {}
         # Get inputed data
         inputText = request.args.get('inputText')
         sourceLanguage = request.args.get('sourceLanguage')
         targetLanguage = request.args.get('targetLanguage')
+
+        print(f"Received the text: {inputText}", flush=True)
+        print(f"Source language: {sourceLanguage}", flush=True)
+        print(f"Target language: {targetLanguage}", flush=True)
         # Get translated text
         translatedText = argostranslate.translate.translate(inputText, sourceLanguage, targetLanguage)
 
@@ -40,23 +43,27 @@ def create_app():
         translatedSynonyms = []
         for synonym in synonyms:
             translatedSynonym = argostranslate.translate.translate(synonym, sourceLanguage, targetLanguage)
-            translatedSynonyms.append(translatedSynonym)
-        return {"translated_text": translatedText, "synonyms": translatedSynonyms}
+            translatedSynonyms.append(translatedSynonym.capitalize())
+        data = {"translated_text": translatedText, "synonyms": translatedSynonyms}
+        print('Data', data, flush=True)
+        return data
     
 
     def getsynonyms(text):
-        # URL = "http://wordser:8080/api/v1/synonyms"
-        # PARAMS = {'word': text}
+        URL = "http://wordser:8080/api/v1/synonyms"
+        PARAMS = {'word': text}
 
-        # # Split the text by spaces, if longer than 1, will return empty synonyms
-        # words = text.split(' ')
-        # synonyms = []
-        # if words == 1:
-        #     response = requests.get(url= URL, params= PARAMS)
-        #     data = response.json()
-        #     synonyms = data["synonyms"]
-        # return synonyms
-        return ["passion", "fire", "desire"]
+        # Split the text by spaces, if longer than 1, will return empty synonyms
+        words = text.split(' ')
+        synonyms = []
+        if len(words) == 1:
+            response = requests.get(url= URL, params= PARAMS)
+            data = response.json()
+            synonyms = data["synonymns"]
+            if len(synonyms) > 7:
+                synonyms = synonyms[:6]
+        return synonyms
+        # return ["passion", "fire", "desire"]
 
     return app
 
