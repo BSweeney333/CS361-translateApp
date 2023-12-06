@@ -30,6 +30,7 @@
     </div>
     <div class="inner-container">
         <button [disabled]="!inputLanguage || !inputText || !outputLanguage" (click)="translate()">Translate</button>
+        <button title={{swapTooltip}} [disabled]="!inputLanguage || !inputText || !outputLanguage" (click)="swapTranslation()">Swap</button>
     </div>
 
 </div>

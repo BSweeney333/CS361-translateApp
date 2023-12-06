@@ -34,6 +34,7 @@ export class AppComponent {
     public inputText: string = '';
     public translatedText: string = '';
     public synonyms: string[] = []
+    public swapTooltip: string = 'Swaps source language with target language and replaces input text with output text'
 
     translate() {
         // Make HTTP request to python backend for translated text
@@ -44,6 +45,14 @@ export class AppComponent {
             this.translatedText = data.translated_text;
             this.synonyms = data.synonyms;
         })
+    }
+
+    swapTranslation() {
+        this.inputText = this.translatedText;
+        this.translatedText = ""
+        let tempLanguage = this.inputLanguage;
+        this.inputLanguage = this.outputLanguage;
+        this.outputLanguage = tempLanguage;
     }
 
     
