@@ -1,37 +1,31 @@
-﻿# CS361-translateApp
-## Language Translation API
+# Translation App
+Class Project for Oregon State University Computer Science 361 - Software Engineering I
 
-This API allows you to receive a translation of the text you send to it, depending on the target language that you provide to it. It is really easy to use. 
+The application consists of two components:
 
-11 Languages are supported by this API: Arabic, Chinese, English, French, German, Greek, Hebrew, Italian, Portuguese, Spanish, and Russian.
+1. Frontend: An angular web app for language translation that serves html.
+2. Backend Service: A Flask service that translates words or phases into the target language.
 
-In order to use this API you must send a GET request to ‘http://localhost:5000/translate’ and provide information for these three parameters: **inputText**, **sourceLanguage**, and **targetLanguage**.
+## Getting Started
 
-The sourceLanguage and targetLanguage must follow this mapping:
-{
-	Arabic: ar,
-	Chinese: zh,
-	English: en,
-	French: fr,
-	German: de,
-	Greek: el,
-	Italian: it,
-	Portuguese: pt,
-	Spanish: es,
-	Russian: ru,
+### Prerequisites
 
-}
+1. Ensure that you have installed docker and `docker-compose`: https://docs.docker.com/compose/install/#scenario-one-install-docker-desktop 
 
-So if you want the target language to be french, you would have to send the fr for the targetLanguage parameter.
+### Using The Translation Web App
+
+1. From the project root directory run:  
+```
+docker-compose -up
+```
+
+2. Go to http://localhost:4200/
+                                                                                                                                                                                                    
 
 
-### Example Request:
-**Method** = GET<br>
-**Params** = inputText, sourceLanguage, targetLanguage<br>
-**URL** = http://localhost:5000/translate?inputText=Hello&sourceLanguage=en&targetLanguage=es<br>
+## Additional Documentation
 
 
 
-The request returns a JSON object containing the key translated_text with the value of the translation: {“translated_text”: “Hola”}
-![image](https://github.com/BSweeney333/CS361-translateApp/assets/91225918/5486e446-b2ed-4648-afbd-ad35e966c2d4)
-
+### Backend Flask Service
+[README](backend/README.md)  
